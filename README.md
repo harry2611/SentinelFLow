@@ -124,14 +124,51 @@ SentinelFlow/
 └── README.md
 ```
 
-## Screenshots
+## Product Walkthrough
 
-Suggested screenshots for GitHub:
+The screenshots below show how a workflow moves through SentinelFlow from intake to monitoring, review, integrations, and API control.
 
-- `docs/screenshots/dashboard.png`
-- `docs/screenshots/task-detail.png`
-- `docs/screenshots/review-queue.png`
-- `docs/screenshots/integrations.png`
+### 1. Demo Lab: submit a new workflow
+
+![Demo Lab](docs/screenshots/demo-lab.png)
+
+This is the intake surface where an operator submits a new support, onboarding, internal ops, or follow-up request.  
+Once submitted, the task is sent to the FastAPI backend, persisted in PostgreSQL, and queued for agent processing through Redis.
+
+### 2. Workflow Inventory: track active and completed runs
+
+![Workflow Inventory](docs/screenshots/workflows.png)
+
+This page shows the live workflow table with task type, execution mode, confidence, latency, and current status.  
+It acts as the main command center for inspecting how the Decision, Execution, and Verifier agents are handling requests.
+
+### 3. Human Review Queue: handle low-confidence or flagged tasks
+
+![Review Queue](docs/screenshots/review-queue.png)
+
+If a workflow has low confidence or fails verification, SentinelFlow routes it here instead of auto-completing it.  
+Operators can approve, reject, or override decisions so the system stays reliable while still automating most of the workload.
+
+### 4. Dashboard: monitor system performance and workflow outcomes
+
+![Dashboard](docs/screenshots/dashboard.png)
+
+The dashboard gives a recruiter-friendly view of total workflows processed, time saved, latency, status mix, and recent decisions.  
+It makes the platform easy to explain as an operational system rather than just an LLM demo.
+
+### 5. Integrations Console: configure external tools and webhooks
+
+![Integrations](docs/screenshots/integrations.png)
+
+This screen manages the execution layer by showing internal APIs, notification tools, and Zapier webhook connectivity.  
+It demonstrates that the system is designed to take real actions through tools, not just classify or summarize work.
+
+### 6. FastAPI API Docs: inspect and test the backend surface
+
+![FastAPI Docs](docs/screenshots/fastapi-docs.png)
+
+The backend exposes clean REST endpoints for tasks, workflows, review actions, analytics, integrations, and demo runs.  
+These docs make the platform easy to test, extend, and discuss in interviews from a systems-design perspective.
 
 ## Backend Highlights
 
@@ -208,7 +245,7 @@ AUTO_APPROVAL_THRESHOLD=0.78
 VERIFIER_PASS_THRESHOLD=0.8
 DEFAULT_ZAPIER_WEBHOOK_URL=
 APP_ENV=development
-BACKEND_CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+BACKEND_CORS_ORIGINS=["http://localhost:3000","http://127.0.0.1:3000"]
 VITE_API_BASE_URL=http://localhost:8000/api/v1
 ```
 
@@ -383,4 +420,3 @@ SentinelFlow demonstrates:
 - **Shared state**: the workflow context is stored and evolved across every pipeline stage.
 - **Feedback loops**: success, failures, overrides, confidence, and latency are recorded as learning signals.
 - **Compounding intelligence over time**: new tasks benefit from similar historical outcomes, policy hints, and reliability patterns captured from previous runs.
-

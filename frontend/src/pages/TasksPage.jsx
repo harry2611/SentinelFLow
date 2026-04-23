@@ -27,8 +27,12 @@ export default function TasksPage() {
   });
 
   return (
-    <div className="page-grid">
-      <Panel title="Workflow Inventory" eyebrow="Search, inspect, and triage">
+    <div className="page-grid page-grid-workflows">
+      <Panel
+        title="Workflow Inventory"
+        eyebrow="Search, inspect, and triage"
+        className="panel-span-full workflow-panel"
+      >
         <div className="filters">
           <input
             className="input"
@@ -66,4 +70,3 @@ export default function TasksPage() {
     </div>
   );
 }
-

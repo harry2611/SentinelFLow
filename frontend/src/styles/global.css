@@ -142,7 +142,8 @@ pre {
 }
 
 .content {
-  padding: 2rem;
+  width: 100%;
+  padding: 2rem 2.25rem 2.5rem;
 }
 
 .topbar {
@@ -170,6 +171,15 @@ pre {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.page-grid-dashboard {
+  grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.95fr);
+}
+
+.page-grid-workflows {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .panel,
@@ -190,6 +200,10 @@ pre {
 
 .panel-span-2 {
   grid-column: span 2;
+}
+
+.panel-span-full {
+  grid-column: 1 / -1;
 }
 
 .panel-header,
@@ -451,6 +465,8 @@ pre {
 .task-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 1080px;
 }
 
 .task-table th,
@@ -458,6 +474,49 @@ pre {
   text-align: left;
   padding: 1rem 0.85rem;
   border-bottom: 1px solid rgba(17, 32, 51, 0.08);
+  vertical-align: top;
+}
+
+.task-table th {
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.task-table th:nth-child(1),
+.task-table td:nth-child(1) {
+  width: 36%;
+}
+
+.task-table th:nth-child(2),
+.task-table td:nth-child(2) {
+  width: 11%;
+}
+
+.task-table th:nth-child(3),
+.task-table td:nth-child(3) {
+  width: 13%;
+}
+
+.task-table th:nth-child(4),
+.task-table td:nth-child(4) {
+  width: 14%;
+}
+
+.task-table th:nth-child(5),
+.task-table td:nth-child(5) {
+  width: 10%;
+}
+
+.task-table th:nth-child(6),
+.task-table td:nth-child(6) {
+  width: 8%;
+}
+
+.task-table th:nth-child(7),
+.task-table td:nth-child(7) {
+  width: 8%;
 }
 
 .task-table tbody tr {
@@ -473,6 +532,28 @@ pre {
 .success-copy {
   margin: 0.25rem 0 0;
   color: var(--muted);
+}
+
+.task-table-main strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.task-table-main p {
+  font-size: 0.92rem;
+}
+
+.workflow-panel .panel-header {
+  align-items: flex-end;
+}
+
+.workflow-panel .panel-header > div:first-child {
+  max-width: 58rem;
+}
+
+.workflow-panel .filters {
+  grid-template-columns: minmax(260px, 2.2fr) repeat(2, minmax(180px, 1fr));
 }
 
 .timeline {
@@ -537,6 +618,7 @@ pre {
   }
 
   .panel-span-2,
+  .panel-span-full,
   .textarea-wide {
     grid-column: span 1;
   }
@@ -547,4 +629,3 @@ pre {
     flex-direction: column;
   }
 }
-

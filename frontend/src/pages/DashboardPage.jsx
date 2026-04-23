@@ -24,7 +24,7 @@ export default function DashboardPage() {
   }));
 
   return (
-    <div className="page-grid">
+    <div className="page-grid page-grid-dashboard">
       <section className="stat-grid">
         <StatCard
           label="total workflows processed"
@@ -127,4 +127,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-

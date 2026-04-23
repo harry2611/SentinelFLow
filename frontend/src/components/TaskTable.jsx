@@ -19,7 +19,7 @@ export default function TaskTable({ tasks, onSelectTask }) {
         <tbody>
           {tasks.map((task) => (
             <tr key={task.id} onClick={() => onSelectTask?.(task)}>
-              <td>
+              <td className="task-table-main">
                 <strong>{task.title}</strong>
                 <p>{task.requester_name}</p>
               </td>
@@ -38,4 +38,3 @@ export default function TaskTable({ tasks, onSelectTask }) {
     </div>
   );
 }
-
