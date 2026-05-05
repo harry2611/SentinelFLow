@@ -7,3 +7,7 @@ frontend/node_modules/
 frontend/dist/
 postgres_data/
 
+
+sentinelflow-worker/sentinelflow/node_modules/
+sentinelflow-worker/sentinelflow/python_modules/
+sentinelflow-worker/icy-king-0082/
